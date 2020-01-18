@@ -1,4 +1,4 @@
-/* Change ppi depending on screen. */
+/* Change ppi depending on screen PPI. */
 let ppi = 227;
 /* Set this variable to devicePixelRatio normally.
  * If you are using developer tools artifical resolution, set this to 1.
@@ -37,7 +37,10 @@ document.addEventListener("mousewheel", () => {
             (0 <= cmBottom && cmBottom <= (7.25 * dpr)) 
         ){
             /* put what to do with the ads here */
-            console.log("AD");
+            // console.log("AD");
+            fetch("http://localhost:5000/cm/input?top=" + 
+                Math.floor(Math.min(cmBottom, 7.25 * dpr)), 
+                { method: "POST" });
         }
     });
 });
