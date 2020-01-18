@@ -1,0 +1,12 @@
+{
+    "name": "padblocker",
+    "version": "1.0",
+    "description": "Build an Extension!",
+    "content_scripts": [{
+        "matches": ["https://*.straitstimes.com/*"],
+        "css": ["test.css"],
+        "js": ["main.js"],
+        "run_at": "document_idle"
+    }],
+    "manifest_version": 2
+}
