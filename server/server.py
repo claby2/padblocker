@@ -8,7 +8,7 @@ ser = serial.Serial('/dev/cu.Repleo-CH341-00003314', 9600)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'lorem5000'
 
 # counter = 32
 
@@ -29,7 +29,7 @@ def getCm():
     resp = flask.Response(content)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     ser.write(bytes(content, 'utf-8'))
-    print(ser.readline())
+    print(ser.read())
     return resp
     # return resp
     # ser.write(cmBottom)

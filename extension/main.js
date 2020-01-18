@@ -16,18 +16,26 @@ let obs = new MutationObserver(muts => {
     // console.log("Added ", muts);
     muts.forEach(mut => {
         mut.addedNodes.forEach(el => {
-            if(el.id.includes('google_ad')){
+            if(el.id && el.id.includes('google_ad')){
                 ads.push(el);
             }
         });
     });
 });
 obs.observe(document, { childList: true, subtree: true });
+let cmb = 0;
+setInterval(()=>{
+    if(cmb) fetch("http://localhost:5000/cm/input?top=" + Math.floor(cmb), { method: "POST" });
+}, 1000);
+
+
+
+let s = true;
 
 document.addEventListener("mousewheel", () => {
     // document.body.parentElement.style.overflow = "auto";
     ads.forEach(el => {
-        let { x, y } = el.getBoundingClientRect();
+        let { x, y, height } = el.getBoundingClientRect();
         let cmTop = ((y * dpr * 2.54) / ppi);
         let cmBottom = (((y + height) * dpr * 2.54) / ppi);
         let cmLeft = ((x * dpr * 2.54) / ppi);
@@ -38,9 +46,7 @@ document.addEventListener("mousewheel", () => {
         ){
             /* put what to do with the ads here */
             // console.log("AD");
-            fetch("http://localhost:5000/cm/input?top=" + 
-                Math.floor(Math.min(cmBottom, 7.25 * dpr)), 
-                { method: "POST" });
+            cmb = cmBottom; 
         }
     });
 });
