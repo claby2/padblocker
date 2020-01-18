@@ -1,3 +1,13 @@
+x = 0;
+t = 0;
+
+chrome.storage.local.set({'count': 0 }, function() {
+    console.log('Settings saved');
+});
+chrome.storage.local.set({'time': 0}, function() {
+    console.log('Settings saved')
+})
+
 /* Change ppi depending on screen PPI. */
 let ppi = 227;
 /* Set this variable to devicePixelRatio normally.
@@ -12,12 +22,31 @@ let ads = [...document.getElementsByTagName('iframe')].filter(e =>
 );
 console.log("ads: ", ads);
 
+chrome.storage.local.get(['count'], function(item) {
+    x = item.count;
+});
+
+let tmp = ads.length;
+
+setInterval(() => {
+    chrome.storage.local.set({'count': x + tmp }, function() {
+        console.log('Settings saved');
+    });
+    chrome.storage.local.set({'time': t++}, function() {
+        console.log('Settings saved')
+    })
+}, 1000);
+
+
+
+
 let obs = new MutationObserver(muts => {
     // console.log("Added ", muts);
     muts.forEach(mut => {
         mut.addedNodes.forEach(el => {
             if(el.id && el.id.includes('google_ad')){
                 ads.push(el);
+                x++;
             }
         });
     });

@@ -1,0 +1,88 @@
+body {
+    margin: 0 !important;
+    font-family: 'Farro';
+    background-color: #F2F2F2;
+    color: #212121;
+    line-height: 1.4;
+    padding-bottom: 10vh;
+}
+
+.navbar {
+    position: absolute;
+    width: 100vw;
+    height: 50px;
+    left: 0;
+    right: 0;
+    background-color: #424242;
+}
+
+#break {
+    height: 8vh;
+}
+
+#logo {
+    user-select: none;
+    margin-left: 20px;
+    color: #FFFFFF;
+}
+
+h1, h3 {
+    font-weight: 400;
+}
+
+h3 {
+    font-weight: 100;
+    color: #424242;
+}
+
+p {
+    color: #424242;
+}
+
+.section {
+    margin-top: 3vh;
+    height: auto;
+    padding: 0 7vw 0 7vw;
+}
+
+.rect {
+    background-color: #FFFFFF;
+    padding: 1em;
+    box-shadow: 1px 1px 5px #888888;
+    width: 100%;
+    margin: 0 1vw 0 1vw;
+}
+
+.rectGroup {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+}
+
+#output {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.adStats {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.adStats li{
+    margin: 0 2vw 0 2vw;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.adStats li p, .adStats li h4{
+    font-weight: 100;
+    margin: 0;
+}
+
+.adStats li p{
+    font-size: 2em;
+}

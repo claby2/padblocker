@@ -1,12 +1,20 @@
 {
-    "name": "padblocker",
+    "name": "padblocker-find",
     "version": "1.0",
     "description": "Build an Extension!",
     "content_scripts": [{
-        "matches": ["https://*.straitstimes.com/*"],
+        "matches": ["https://*/*"],
         "css": ["test.css"],
         "js": ["main.js"],
         "run_at": "document_idle"
     }],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+      },
+    "permissions": ["declarativeContent", "storage"],
+    "page_action": {
+        "default_popup": "index.html"
+    },
     "manifest_version": 2
 }
