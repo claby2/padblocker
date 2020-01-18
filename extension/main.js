@@ -1,3 +1,4 @@
+/* Change ppi depending on screen. */
 let ppi = 227;
 /* Set this variable to devicePixelRatio normally.
  * If you are using developer tools artifical resolution, set this to 1.
