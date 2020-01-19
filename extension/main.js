@@ -37,9 +37,6 @@ setInterval(() => {
     })
 }, 1000);
 
-
-
-
 let obs = new MutationObserver(muts => {
     // console.log("Added ", muts);
     muts.forEach(mut => {
@@ -54,7 +51,9 @@ let obs = new MutationObserver(muts => {
 obs.observe(document, { childList: true, subtree: true });
 let cmb = 0;
 setInterval(()=>{
-    if(cmb) fetch("http://localhost:5000/cm/input?top=" + (2*Math.floor(cmb/2)), { method: "POST" });
+	cmb = Math.min(18, cmb);
+	console.log(cmb);
+    fetch("http://localhost:5000/cm/input?top=" + (18 - 2*Math.floor(cmb/2 + 2.5/2)), { method: "POST" });
 }, 1000);
 
 
@@ -63,10 +62,11 @@ let s = true;
 
 document.addEventListener("mousewheel", () => {
     // document.body.parentElement.style.overflow = "auto";
-    let f = false;
+	cmb = 0;
     for(let i = 0; i < ads.length; i++){
         let el = ads[i];
         let { x, y, height } = el.getBoundingClientRect();
+		console.log(y);
         let cmTop = ((y * dpr * 2.54) / ppi);
         let cmBottom = (((y + height) * dpr * 2.54) / ppi);
         let cmLeft = ((x * dpr * 2.54) / ppi);
@@ -77,11 +77,8 @@ document.addEventListener("mousewheel", () => {
         ){
             /* put what to do with the ads here */
             // console.log("AD");
-            cmb = Math.max(cmb, cmBottom);
-            f = true;
+			console.log(cmBottom);
+            cmb = Math.max(cmb, Math.min(cmBottom, 18));
         }
     };
-    if(!f){
-        cmb = 0;
-    }
 });

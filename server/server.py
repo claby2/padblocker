@@ -4,7 +4,7 @@ from flask import request, jsonify, send_from_directory
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-ser = serial.Serial('/dev/cu.Repleo-CH341-00003314', 9600)
+ser = serial.Serial('/dev/cu.usbmodem14201', 9600)
 
 @app.route('/')
 def hello_world():
@@ -28,8 +28,9 @@ def getCm():
     content = request.args['top']
     resp = flask.Response(content)
     resp.headers['Access-Control-Allow-Origin'] = '*'
-    ser.write(bytes(content, 'utf-8'))
-    print(ser.read())
+    ser.write(bytes(content + "\r\n", 'utf-8'))
+    print("Content is", content)
+    print(ser.readline())
     return resp
     # return resp
     # ser.write(cmBottom)
