@@ -2,6 +2,7 @@
 A physical Adblocker -- because who needs good solutions to problems?
 Project for Hack&Roll 2020.
 Team plam: Leo Lee, Edward Wibowo, Vir Chaudhury
+https://devpost.com/software/padblocker
 
 ## Inspiration
 We wanted to solve the problem of ads and content creator revenue and do it better, and impractically.
