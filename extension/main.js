@@ -54,7 +54,7 @@ let obs = new MutationObserver(muts => {
 obs.observe(document, { childList: true, subtree: true });
 let cmb = 0;
 setInterval(()=>{
-    if(cmb) fetch("http://localhost:5000/cm/input?top=" + Math.floor(cmb), { method: "POST" });
+    if(cmb) fetch("http://localhost:5000/cm/input?top=" + (2*Math.floor(cmb/2)), { method: "POST" });
 }, 1000);
 
 
@@ -63,7 +63,9 @@ let s = true;
 
 document.addEventListener("mousewheel", () => {
     // document.body.parentElement.style.overflow = "auto";
-    ads.forEach(el => {
+    let f = false;
+    for(let i = 0; i < ads.length; i++){
+        let el = ads[i];
         let { x, y, height } = el.getBoundingClientRect();
         let cmTop = ((y * dpr * 2.54) / ppi);
         let cmBottom = (((y + height) * dpr * 2.54) / ppi);
@@ -75,7 +77,11 @@ document.addEventListener("mousewheel", () => {
         ){
             /* put what to do with the ads here */
             // console.log("AD");
-            cmb = cmBottom; 
+            cmb = Math.max(cmb, cmBottom);
+            f = true;
         }
-    });
+    };
+    if(!f){
+        cmb = 0;
+    }
 });
