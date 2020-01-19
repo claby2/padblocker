@@ -20,7 +20,7 @@ This project actually ended up being more complex than we originally thought. Th
 We only short circuited and melted our battery terminals once. On a more serious note, all of us were relatively inexperienced at hardware, so the fact that we could throw this together in 24 hours was pretty nice.
 
 ## What we learned
-## We learnt how to use an Arduino and various hardware components.
+We learnt how to use an Arduino and various hardware components.
 
 ## What's next for padblocker
 Allow the ability to block any ads on the x-axis and make it more consistent.
